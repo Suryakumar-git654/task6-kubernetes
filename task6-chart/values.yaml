@@ -1,0 +1,19 @@
+replicaCount: 2
+
+image:
+  repository: nginx
+  pullPolicy: IfNotPresent
+  tag: "1.28"
+
+service:
+  type: NodePort
+  port: 80
+
+resources: {}
+
+serviceAccount:
+  create: true
+  automount: true
+
+ingress:
+  enabled: false

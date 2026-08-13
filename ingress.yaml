@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: task6-app-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: task6.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: task6-app-task6-chart
+                port:
+                  number: 80
