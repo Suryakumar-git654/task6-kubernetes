@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: task6-app
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Suryakumar-git654/task6-kubernetes.git
+    targetRevision: main
+    path: task6-chart
+
+    helm:
+      releaseName: task6-app
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: task6-app
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
